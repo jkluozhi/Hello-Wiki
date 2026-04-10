@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hello-wiki
 
-## Getting Started
+基于 **pnpm** 的 monorepo，Web 应用使用 [Next.js](https://nextjs.org)（位于 `apps/web`），配套 React 19、TypeScript 与 Tailwind CSS v4。
 
-First, run the development server:
+## 本地开发
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+在仓库根目录执行：
+
+| 命令 | 说明 |
+|------|------|
+| `pnpm dev` | 启动开发服务器（默认 <http://localhost:3000>） |
+| `pnpm build` | 生产构建 |
+| `pnpm start` | 启动生产服务（需先 build） |
+| `pnpm lint` | 运行 ESLint |
+
+页面入口：`apps/web/src/app/page.tsx`，修改后热更新。
+
+## 项目结构
+
+```
+hello-wiki/
+├── apps/
+│   └── web/          # Next.js 应用
+├── package.json      # 根脚本与 workspace
+└── pnpm-lock.yaml
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 参考文档
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js 文档](https://nextjs.org/docs)
+- [Next.js 部署说明](https://nextjs.org/docs/app/building-your-application/deploying)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Git Commit 规范
 
-## Learn More
+提交信息建议使用类型前缀，便于检索与变更说明：
 
-To learn more about Next.js, take a look at the following resources:
+| 类型 | 说明 |
+|------|------|
+| **feat** | 新增 feature |
+| **fix** | 修复 bug |
+| **docs** | 仅仅修改了文档，比如 README、CHANGELOG、CONTRIBUTE 等等 |
+| **style** | 仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑 |
+| **refactor** | 代码重构，没有加新功能或者修复 bug |
+| **perf** | 优化相关，比如提升性能、体验 |
+| **test** | 测试用例，包括单元测试、集成测试等 |
+| **chore** | 改变构建流程、或者增加依赖库、工具等 |
+| **revert** | 回滚到上一个版本 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+示例：`feat: 添加词条搜索`、`fix: 修正目录跳转错误`。
